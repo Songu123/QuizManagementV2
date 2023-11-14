@@ -1,0 +1,24 @@
+# ninja log v5
+7	4983	1699985360768728261	CMakeFiles/QuizManagementCopy.dir/Database.cpp.o	33abc46373aad47f
+7857	12068	1699985367858604825	CMakeFiles/QuizManagementCopy.dir/MenuUpdateQuiz.cpp.o	d27d7fb5d4d3f372
+6554	6628	1699985362425090795	CMakeFiles/QuizManagementCopy.dir/ResultManagement.cpp.o	65c743017def4ec9
+5353	9949	1699985365733944138	CMakeFiles/QuizManagementCopy.dir/UserManagement.cpp.o	2fa51c7ede5b915e
+7	4847	1699985360635025895	CMakeFiles/QuizManagementCopy.dir/MenuAdmin.cpp.o	6de96f332a344a92
+4984	9612	1699985365402057572	CMakeFiles/QuizManagementCopy.dir/TestManagement.cpp.o	130ba40ff7c547f9
+4848	6554	1699985362342756615	CMakeFiles/QuizManagementCopy.dir/MenuUser.cpp.o	c008d4f097f0ee0b
+13055	13148	1699985368942693864	QuizManagementCopy	a5822cd6647cc9bd
+7	5353	1699985361139956748	CMakeFiles/QuizManagementCopy.dir/main.cpp.o	77c16e229da029c5
+6628	7857	1699985363646718171	CMakeFiles/QuizManagementCopy.dir/CurrentUser.cpp.o	d5b5fcc4c92e499
+0	247	1699985399954689986	build.ninja	6f0186e414be68d0
+9612	13055	1699985368847959082	CMakeFiles/QuizManagementCopy.dir/MenuUpdateQuestion.cpp.o	710cc901f0de5d88
+1	4884	1699985448191611158	CMakeFiles/QuizManagementV2.dir/MenuAdmin.cpp.o	c674492d30aa9d09
+0	4974	1699985448282672741	CMakeFiles/QuizManagementV2.dir/Database.cpp.o	f069a8f4e6257067
+0	5170	1699985448474548076	CMakeFiles/QuizManagementV2.dir/main.cpp.o	6dcbf71c4d00d6bc
+4889	6535	1699985449840352768	CMakeFiles/QuizManagementV2.dir/MenuUser.cpp.o	3b469625fb87178
+6535	6615	1699985449928036394	CMakeFiles/QuizManagementV2.dir/ResultManagement.cpp.o	c1914ff556bc48bc
+6615	7890	1699985451198109364	CMakeFiles/QuizManagementV2.dir/CurrentUser.cpp.o	f2746e402e336aa4
+4976	9590	1699985452895732090	CMakeFiles/QuizManagementV2.dir/TestManagement.cpp.o	1a3f7982f34bd1cf
+5170	9855	1699985453161208534	CMakeFiles/QuizManagementV2.dir/UserManagement.cpp.o	58498af181115509
+7890	11639	1699985454949109350	CMakeFiles/QuizManagementV2.dir/MenuUpdateQuiz.cpp.o	251c8e9326d325a1
+9591	12756	1699985456062157598	CMakeFiles/QuizManagementV2.dir/MenuUpdateQuestion.cpp.o	b3aed8debaa3be90
+12756	12890	1699985456202006048	QuizManagementV2	cf85c4e96f03e89e

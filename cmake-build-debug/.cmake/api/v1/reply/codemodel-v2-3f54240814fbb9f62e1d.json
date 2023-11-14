@@ -1,0 +1,60 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.26"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "QuizManagementV2",
+					"targetIndexes" : 
+					[
+						0
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "QuizManagementV2::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-QuizManagementV2-Debug-fa0999aff3d97cbc45f9.json",
+					"name" : "QuizManagementV2",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/Users/macbook/Documents/1.C:C++/L\u1eadp tr\u00ecnh C++/C++ c\u01a1 b\u1ea3n/QuizManagementV2/cmake-build-debug",
+		"source" : "/Users/macbook/Documents/1.C:C++/L\u1eadp tr\u00ecnh C++/C++ c\u01a1 b\u1ea3n/QuizManagementV2"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 5
+	}
+}
