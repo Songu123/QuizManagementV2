@@ -13,9 +13,10 @@
 
 class MenuUpdateQuestion {
 public:
-    void updateAnswer(int question_id);
-    void menuMenuAnswer(int question_id);
+    void updateQuestions(int quiz_id);
     void updateQuestion(int question_id);
+    void updateAnswer(int question_id);
+    void menuUpdateAnswer(int question_id);
 };
 
 
