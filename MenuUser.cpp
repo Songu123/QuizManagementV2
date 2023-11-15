@@ -1,38 +1,27 @@
 #include "MenuUser.h"
+using namespace std;
 
-MenuUser::MenuUser() {
-    options = {
-            {"1", "Đăng kí thi"},
-            {"2", "Đăng nhập"},
-            {"0", "Thoát"}
-    };
-}
-
-void MenuUser::display() {
-    std::cout << "MENU USER" << std::endl;
-    for (auto option: options) {
-        std::cout << option.first << ". " << option.second << std::endl;
-    }
-}
-
-void MenuUser::run() {
+void MenuUser::menuUser(int n) {
     int choice;
     while (true) {
-        display();
-        std::cout << "Nhập lựa chọn của bạn" << std::endl;
-        std::cin >> choice;
+        cout << "MENU NGƯỜI DÙNG" << endl;
+        cout << "1. Đăng ký thi" << endl;
+        cout << "2. Đăng nhập" << endl;
+        cout << "0. Thoát" << endl;
+        cout << "Nhập lựa chọn của bạn" << endl;
+        cin >> choice;
         switch (choice) {
             case 1:
-                std::cout << "Bạn đã chọn đăng kí thi" << std::endl;
+                cout << "Bạn đã chọn đăng kí thi" << endl;
                 break;
             case 2:
-                std::cout << "Bạn đã chọn đăng nhập" << std::endl;
+                cout << "Bạn đã chọn đăng nhập" << endl;
                 break;
             case 0:
-                std::cout << "Bạn đã chọn thoát!" << std::endl;
+                cout << "Bạn đã chọn thoát!" << endl;
                 return;
             default:
-                std::cout << "Bạn đã chọn sai! Vui lòng nhập lại!" << std::endl;
+                cout << "Bạn đã chọn sai! Vui lòng nhập lại!" << endl;
         }
     }
 }

@@ -13,8 +13,7 @@ void MenuUpdateQuiz::menuUpdateQuiz() {
     while (success) {
         cout << "MENU CẬP NHẬT QUIZ" << endl;
         cout << "1. Cập nhật đề" << endl;
-        cout << "2. Cập nhật câu hỏi" << endl;
-        cout << "0. Quay lại" << endl;
+        cout << "0. Quay lại QUẢN LÝ QUIZ" << endl;
         cout << "Mời chọn: ";
         int choose;
         cin >> choose;
@@ -28,9 +27,6 @@ void MenuUpdateQuiz::menuUpdateQuiz() {
                 case 1:
                     MenuUpdateQuiz::updateQuiz();
                     break;
-                case 2:
-                    MenuUpdateQuiz::updateQuestions();
-                    break;
                 case 0:
                     return;
                 default:
@@ -42,11 +38,11 @@ void MenuUpdateQuiz::menuUpdateQuiz() {
 }
 
 //MENU CẬP NHẬT CÂU HỎI
-void MenuUpdateQuiz::menuUpdateQuestion() {
+void MenuUpdateQuiz::menuUpdateQuestion(int quiz_id) {
     while (true) {
-        cout << "MENU SỬA CÂU HỎI" << endl;
+        cout << "MENU CẬP NHẬT CÂU HỎI" << endl;
         cout << "1. Sửa câu hỏi" << endl;
-        cout << "0. Quay lại" << endl;
+        cout << "0. Quay lại MENU CẬP NHẬT QUIZ" << endl;
         cout << "Chọn: ";
         int choose;
         cin >> choose;
@@ -58,7 +54,7 @@ void MenuUpdateQuiz::menuUpdateQuestion() {
         } else {
             switch (choose) {
                 case 1:
-                    MenuUpdateQuiz::menuUpdateQuestion();
+                    mu.updateQuestions(quiz_id);
                     break;
                 case 0:
                     return;
@@ -78,40 +74,41 @@ void MenuUpdateQuiz::updateQuiz() {
         try {
             Query qr = Database::con.query("SELECT * FROM quizs");
             StoreQueryResult sqr = qr.store();
-            if (sqr) {
+            if (sqr.num_rows() > 0) {
                 cout << "DANH SÁCH CÁC ĐỀ" << endl;
                 for (size_t i = 0; i < sqr.size(); i++) {
                     Row row = sqr[i];
                     cout << "ID: " << row[0] << ", Name: " << row[1] << ", Description: " << row[2] << endl;
                 }
-            } else {
-                cout << "Không có dữ liệu!" << endl;
-            }
-
-            int id;
-            cout << "Nhập id: ";
-            cin >> id;
-            cin.ignore();
-            if (cin.fail()) {
-                cout << "Nhập sai! Vui lòng nhập lại!!!" << endl;
-                cin.clear();
-                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                int quiz_id;
+                cout << "Nhập id: ";
+                cin >> quiz_id;
+                cin.ignore();
+                if (cin.fail()) {
+                    cout << "Nhập sai! Vui lòng nhập lại!!!" << endl;
+                    cin.clear();
+                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                } else {
+                    success = false;
+                    Query q = Database::con.query("SELECT * FROM quizs where id = " + to_string(quiz_id) + "");
+                    StoreQueryResult sqr = q.store();
+                    if (sqr.num_rows() > 0) {
+                        cout << "Nhập tên đề mới: ";
+                        getline(cin, name);
+                        cout << "Nhập mô tả mới: ";
+                        getline(cin, description);
+                        Query query = Database::con.query(
+                                "UPDATE quizs SET name = '" + name + "', description = '" + description + "' WHERE id = " +
+                                to_string(quiz_id) + ";");
+                        query.execute();
+                        MenuUpdateQuiz::menuUpdateQuestion(quiz_id);
+                    } else {
+                        cout << "Không tìm thấy đề với ID đã nhập." << endl;
+                    }
+                }
             } else {
                 success = false;
-                Query q = Database::con.query("SELECT * FROM quizs where id = " + to_string(id) + "");
-                StoreQueryResult sqr = q.store();
-                if (sqr.num_rows() > 0) {
-                    cout << "Nhập tên đề mới: ";
-                    getline(cin, name);
-                    cout << "Nhập mô tả mới: ";
-                    getline(cin, description);
-                    Query query = Database::con.query(
-                            "UPDATE quizs SET name = '" + name + "', description = '" + description + "' WHERE id = " +
-                            to_string(id) + ";");
-                    query.execute();
-                } else {
-                    cout << "Không tìm thấy đề với ID đã nhập." << endl;
-                }
+                cout << "Không có dữ liệu đề!" << endl;
             }
         } catch (Exception &e) {
             cerr << "Lỗi MySQL: " << e.what() << endl;
@@ -120,65 +117,7 @@ void MenuUpdateQuiz::updateQuiz() {
 
 }
 
-//HÀM CẬP NHẬT CÂU HỎI
-void MenuUpdateQuiz::updateQuestions() {
-    Database::connectToDatabase();
-    bool success = true;
-    while (success) {
-        try {
-            Query qr = Database::con.query("SELECT * FROM quizs");
-            StoreQueryResult sqr = qr.store();
-            if (sqr) {
-                cout << "DANH SÁCH CÁC ĐỀ" << endl;
-                for (size_t i = 0; i < sqr.size(); i++) {
-                    Row row = sqr[i];
-                    cout << "ID: " << row[0] << ", Name: " << row[1] << ", Description: " << row[2] << endl;
-                }
-            } else {
-                cout << "Không có dữ liệu!" << endl;
-            }
 
-            int id;
-            cout << "Nhập id: ";
-            cin >> id;
-            cin.ignore();
-            if (cin.fail()) {
-                cout << "Nhập sai! Vui lòng nhập lại!!!" << endl;
-                cin.clear();
-                cin.ignore(numeric_limits<streamsize>::max(), '\n');
-            } else {
-                Query q = Database::con.query("SELECT * FROM questions WHERE quizs_id = " + to_string(id) + "");
-                StoreQueryResult sq = q.store();
-                if (sq) {
-                    cout << "DANH SÁCH CÁC CÂU HỎI" << endl;
-                    for (size_t i = 0; i < sq.size(); i++) {
-                        Row row = sq[i];
-                        cout << "ID: " << row[0] << ", Content: " << row[1] << ", Type: " << row[2] << ", Point: "
-                             << row[3] << endl;
-                    }
-                } else {
-                    cout << "Không có dữ liệu!" << endl;
-                }
-                while (success) {
-                    int targetID;
-                    cout << "Nhập id question: ";
-                    cin >> targetID;
-                    cin.ignore();
-                    if (cin.fail()) {
-                        cout << "Nhập sai! Vui lòng nhập lại!!!" << endl;
-                        cin.clear();
-                        cin.ignore(numeric_limits<streamsize>::max(), '\n');
-                    } else {
-                        success = false;
-                        mu.updateQuestion(targetID);
-                    }
-                }
-            }
-        } catch (Exception &e) {
-            cerr << "Lỗi MySQL: " << e.what() << endl;
-        }
-    }
-}
 
 
 

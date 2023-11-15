@@ -2,17 +2,11 @@
 #define MENUUSER_H
 
 #include <iostream>
-#include <map>
 #include <string>
 
 class MenuUser {
 public:
-    MenuUser();
-    void display();
-    void run();
-
-private:
-    std::map<std::string, std::string> options;
+    void menuUser(int n);
 };
 
 #endif // MENUUSER_H

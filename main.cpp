@@ -7,19 +7,14 @@
 #include "MenuUser.h"
 #include "MenuAdmin.cpp"
 #include <format>
-//#include "CurrentUser.h"
+#include "CurrentUser.h"
 
 using namespace std;
 using namespace mysqlpp;
 
-//Connection Database::con;
-
-void signUp();
-
 int logIn();
 // Khởi tạo biến static trong lớp
 //int CurrentUser::currentUserID = -1; // Giá trị mặc định khi chưa có ID nào được đặt
-
 
 int main() {
     MenuAdmin menuAdmin;
@@ -57,12 +52,12 @@ int main() {
                         break;
                     case 2:
                         cout << "User" << endl;
-                        n = logIn();
-                        if (n >= 0) {
-                            menuUser.run();
-                        } else {
-                            cout << "Nhập tên người dùng và mật khẩu chưa chính xác!";
-                        }
+                        menuUser.menuUser(logIn());
+//                        n = logIn();
+//                        if (n >= 0) {
+//                        } else {
+//                            cout << "Nhập tên người dùng và mật khẩu chưa chính xác!";
+//                        }
                         break;
                     case 0:
                         cout << "Đã thoát chương trình!" << endl;
@@ -74,21 +69,6 @@ int main() {
                 }
             }
         }
-
-//
-//        // Check if the result is not empty
-//        if (sq.num_rows() == 0) {
-//            cout << "No data found in the 'quizs' table." << endl;
-//        } else {
-//            cout << "Printing data from the 'quizs' table:\n";
-//            for (int i = 0; i < sq.num_rows(); ++i) {
-//                Row row = sq[i];
-//                cout << "Quiz ID: " << row[0] << endl;
-//                cout << "Question: " << row[1] << endl;
-//                cout << "Answer: " << row[2] << endl;
-//                cout << "------------------------------" << endl;
-//            }
-//        }
     } catch (Exception &e) {
         cout << e.what() << endl;
     }

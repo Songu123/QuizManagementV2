@@ -15,9 +15,8 @@
 class MenuUpdateQuiz {
     MenuUpdateQuestion mu;
 public:
-    void updateQuestions();
     void updateQuiz();
-    void menuUpdateQuestion();
+    void menuUpdateQuestion(int quiz_id);
     void menuUpdateQuiz();
 };
 

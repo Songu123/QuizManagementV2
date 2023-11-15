@@ -11,7 +11,7 @@ using namespace mysqlpp;
 //    Hàm chạy
     void QuizManagement::run(){
         while(true){
-            cout << "\nQUẢN LÝ ĐỀ" << endl;
+            cout << "\nQUẢN LÝ QUIZ" << endl;
             cout << "1. Danh sách các đề" << endl;
             cout << "2. Thêm đề" << endl;
             cout << "3. Sửa đề" << endl;
